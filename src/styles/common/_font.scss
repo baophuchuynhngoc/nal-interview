@@ -1,0 +1,85 @@
+$font-sizes: (h1: 2.4rem,
+  h2: 1.8rem,
+  h3: 3.2rem,
+  h4: 2.4rem,
+  h5: 1.8rem,
+  p: 1.6rem,
+  ex: 1.2rem,
+  small: 1rem);
+
+$font-weights: (thin: 100,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semi-bold: 600,
+  bold: 700,
+  extra-bold: 800,
+  black: 900,
+);
+
+$extraThin: 100;
+$thin: 200;
+$light: 300;
+$book: 400;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+$extra-bold: 800;
+$black: 900;
+
+$fonts: Segoe "../fonts/Segoe-UI-Bold.woff""truetype"$bold normal,
+Segoe "../fonts/Segoe-UI.woff""truetype"$book normal;
+
+@each $font-name,
+$src,
+$format,
+$weight,
+$style in $fonts {
+  @font-face {
+    font-family: $font-name;
+    src: url($src) format($format);
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+html {
+  font-size: $base__font-size;
+}
+
+body {
+  font-family: "Segoe", sans-serif;
+  @include font-size(p);
+  font-style: normal;
+  line-height: 24px;
+  @include text-color(light-black);
+}
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+div,
+a,
+span {
+  margin-bottom: 0;
+  @include text-color(light-black);
+
+  &.white {
+    @include text-color(white);
+  }
+
+  &.black {
+    @include text-color(black);
+  }
+
+  &.primary {
+    @include text-color(primary);
+  }
+}

@@ -1,0 +1,60 @@
+.header {
+  position: relative;
+  top: 0;
+  height: 10rem;
+  background-color: slategray;
+}
+
+.main-page {
+  overflow: hidden;
+
+  .articles-list {
+    overflow-y: scroll;
+    img {
+      height: 100%;
+    }
+  }
+
+  .search-bar {
+    input {
+      font-size: 1.6rem;
+    }
+  }
+
+  .media {
+    position: relative;
+
+    .button-group {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
+
+.details-articles {
+  .status-bar {
+    img {
+      width: 2rem;
+    }
+    .home-direct {
+      transition: 0.3s all;
+
+      &:hover {
+        color: #28a745;
+      }
+    }
+  }
+
+    
+
+  .content {
+    padding: 0 10rem;
+    text-align: justify;
+
+    img {
+      width: 6.4rem;
+      float: left;
+      margin-right: 3rem;
+    }
+  }
+}

@@ -1,14 +1,14 @@
+import ActionBar from "@components/ActionBar";
+import ArticlesList from "@components/ArticlesList";
+import Header from "@components/Header";
 import React from "react";
-
-import { Header, Main, Footer, Cards } from "@components";
 
 const Home: React.FC = () => {
   return (
-    <div className="d-flex flex-column min-vh-100">
+    <div className="main-page d-flex flex-column min-vh-100">
       <Header />
-      <Main />
-      <Cards />
-      <Footer />
+      <ActionBar />
+      <ArticlesList />
     </div>
   );
 };

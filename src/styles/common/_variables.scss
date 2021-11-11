@@ -1,0 +1,25 @@
+//Text
+$base__font-size: 10px;
+$spacer: 1.6rem;
+
+$colors: (light-black: #707070,
+  primary: #BA0A7E,
+  blue: #20C5DE,
+  secondary: #FD33B8,
+  black: #000000,
+  white: #fff);
+
+/** Bootstrap navbar fix (https://git.io/fADqW) */
+$navbar-dark-toggler-icon-bg: none;
+$navbar-light-toggler-icon-bg: none;
+
+//Breakpoints
+$xs-device: 375px;
+$sm-device: 576px;
+$md-device: 768px;
+$lg-device: 992px;
+$xl-device: 1200px;
+$xxl-device: 1440px;
+$xxxl-device: 1920px;
+$padding-on-mobile: 20px;
+$max-container-width: 99.27vw;

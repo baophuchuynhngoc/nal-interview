@@ -1,11 +1,10 @@
 import React from "react";
 
-import { Logo } from "@components";
+const Header = () => {
+    return (
+        <div className="header">
+        </div>
+    )
+}
 
-export const Header: React.FC = () => {
-  return (
-    <div className="text-center" style={{ backgroundColor: "#20232a" }}>
-      <Logo />
-    </div>
-  );
-};
+export default Header;

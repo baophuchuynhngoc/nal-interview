@@ -1,27 +1,24 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import ModalEdit from "@components/ModalEdit";
+import Link from 'next/link'
 
-const ButtonGroup = ({ setShowDetail }: any) => {
+const ButtonGroup = ({ setShowDetail, item, updateData }: any) => {
   const [showEdit, setShowEdit] = useState(false);
   const router = useRouter();
+
   const directDetails = () => {
-    setShowDetail();
-    router.push("/details");
+    router.push("/detail");
   };
   const handleShowEdit = () => {
     setShowEdit(true);
   };
-  console.log(showEdit);
   return (
     <div className="button-group d-flex">
-      <button
-        type="button"
-        className="btn btn-outline-primary mr-3"
-        onClick={directDetails}
-      >
-        Show Detail
-      </button>
+      <Link href={`/detail/${item.id}`}>
+        <a className="btn btn-outline-primary mr-3">Show Detail</a>
+      </Link>
+
       <button
         type="button"
         className="btn btn-outline-warning"
@@ -29,7 +26,12 @@ const ButtonGroup = ({ setShowDetail }: any) => {
       >
         Edit
       </button>
-      <ModalEdit showEdit={showEdit} setShowEdit={setShowEdit} />
+      <ModalEdit
+        showEdit={showEdit}
+        setShowEdit={setShowEdit}
+        item={item}
+        updateData={updateData}
+      />
     </div>
   );
 };

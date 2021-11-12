@@ -5,7 +5,7 @@ import map from "lodash/map";
 import get from "lodash/get";
 import { useRouter } from "next/router";
 
-const ModalEdit = ({ showEdit, setShowEdit, data }: any) => {
+const ModalEdit = ({ showEdit, setShowEdit, item, updateData }: any) => {
   const style = showEdit ? {} : { display: "none" };
   const handleClickHide = () => {
     setShowEdit(!showEdit);
@@ -37,14 +37,16 @@ const ModalEdit = ({ showEdit, setShowEdit, data }: any) => {
     setImage(image);
   }, []);
 
-  const updateAPIData = () => {
-    axios
-      .put(`https://617b71c2d842cf001711bed9.mockapi.io/api/v1/blogs/${data.id}`, {
+  const updateAPIData = async () => {
+    const res = await axios.put(
+      `https://617b71c2d842cf001711bed9.mockapi.io/api/v1/blogs/${item.id}`,
+      {
         title,
         content,
-      })
-      .then(() => {});
-    router.push("/");
+      }
+    );
+    updateData(get(res, "data", {}));
+    setShowEdit(false);
   };
   return (
     <ReactModal isOpen={showEdit} ariaHideApp={false} style={customStyles}>

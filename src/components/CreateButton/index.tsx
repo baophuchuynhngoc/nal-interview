@@ -4,8 +4,8 @@ import Link from "next/link";
 const CreateButton = () => {
   return (
     <Link href="/create">
-      <div className="create-btn">
-        <button className="btn btn-outline-primary">Create</button>
+      <div className="create-btn mr-5">
+        <button className="btn btn-primary">Create</button>
       </div>
     </Link>
   );

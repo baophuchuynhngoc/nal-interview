@@ -8,8 +8,6 @@ import React from "react";
 const Home: React.FC = ({ articles, totalPages }) => {
   return (
     <div className="main-page d-flex flex-column min-vh-100">
-      <ActionBar />
-
       <ArticlesList articles={articles} totalPages={totalPages} />
     </div>
   );

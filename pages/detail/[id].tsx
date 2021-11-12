@@ -12,14 +12,18 @@ const DetailPage = ({ detail }) => {
 };
 
 export const getServerSideProps = async ({ query }) => {
-  const res = await axios.get(
-    `https://617b71c2d842cf001711bed9.mockapi.io/api/v1/blogs/${query.id}`
-  );
-  return {
-    props: {
-      detail: res?.data || {},
-    },
-  };
+  try {
+    const res = await axios.get(
+      `${process.env.API_URL}/blogs/${query.id}`
+    );
+    return {
+      props: {
+        detail: res?.data || {},
+      },
+    };
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export default DetailPage;

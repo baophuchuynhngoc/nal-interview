@@ -16,13 +16,17 @@ const Pagination = ({ totalPages = 1, setData }) => {
   }, []);
 
   const fetchData = (page) => async () => {
-    setShowLoading(true);
-    const res = await axios.get(
-      `https://617b71c2d842cf001711bed9.mockapi.io/api/v1/blogs?page=${page}&limit=10`
-    );
-    setData(res?.data || []);
-    setCurrentPage(page);
-    setShowLoading(false);
+    try {
+      setShowLoading(true);
+      const res = await axios.get(
+        `${process.env.API_URL}/blogs?page=${page}&limit=10`
+      );
+      setData(res?.data || []);
+      setCurrentPage(page);
+      setShowLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const handleNext = () => {
@@ -39,12 +43,12 @@ const Pagination = ({ totalPages = 1, setData }) => {
 
   return (
     <div>
-      {showLoading && (
-        <Loading />
-      )}
+      {showLoading && <Loading />}
       <nav aria-label="Page navigation example">
         <ul className="pagination justify-content-end">
-          <li className="page-item disabled page-link" onClick={handlePrev}>Previous</li>
+          <li className="page-item disabled page-link" onClick={handlePrev}>
+            Previous
+          </li>
           {map(pages, (item) => (
             <li
               className={`page-item page-link ${

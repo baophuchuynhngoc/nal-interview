@@ -38,15 +38,19 @@ const ModalEdit = ({ showEdit, setShowEdit, item, updateData }: any) => {
   }, []);
 
   const updateAPIData = async () => {
-    const res = await axios.put(
-      `https://617b71c2d842cf001711bed9.mockapi.io/api/v1/blogs/${item.id}`,
-      {
-        title,
-        content,
-      }
-    );
-    updateData(get(res, "data", {}));
-    setShowEdit(false);
+    try {
+      const res = await axios.put(
+        `${process.env.API_URL}/blogs/${item.id}`,
+        {
+          title,
+          content,
+        }
+      );
+      updateData(get(res, "data", {}));
+      setShowEdit(false);
+    } catch (err) {
+      console.log(err);
+    }
   };
   return (
     <ReactModal isOpen={showEdit} ariaHideApp={false} style={customStyles}>

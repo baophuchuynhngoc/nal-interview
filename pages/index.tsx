@@ -9,24 +9,29 @@ const Home: React.FC = ({ articles, totalPages }) => {
   return (
     <div className="main-page d-flex flex-column min-vh-100">
       <ActionBar />
-      
+
       <ArticlesList articles={articles} totalPages={totalPages} />
     </div>
   );
 };
 
 export const getStaticProps = async () => {
-  const resAll = await axios.get(
-    "https://617b71c2d842cf001711bed9.mockapi.io/api/v1/blogs"
-  );
-  const totalPages = Math.ceil(resAll?.data.length / 10);
+ 
+  try {
+    const resAll = await axios.get(
+   `${process.env.API_URL}/blogs`
+    );
+    const totalPages = Math.ceil(resAll?.data.length / 10);
 
-  const res = await axios.get(
-    "https://617b71c2d842cf001711bed9.mockapi.io/api/v1/blogs?page=1&limit=10"
-  );
+    const res = await axios.get(
+      `${process.env.API_URL}/blogs?page=1&limit=10`
+    );
 
-  return {
-    props: { articles: res?.data || [], totalPages },
-  };
+    return {
+      props: { articles: res?.data || [], totalPages },
+    };
+  } catch (err) {
+    console.log(err);
+  }
 };
 export default Home;

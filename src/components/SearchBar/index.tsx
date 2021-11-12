@@ -6,13 +6,17 @@ import Loading from "@components/Loading";
 const SearchBar = ({ setData }) => {
   const [showLoading, setShowLoading] = useState(false);
   const resSearch = async (e) => {
-    const { value } = e.target;
-    setShowLoading(true);
-    const res = await axios.get(
-      `https://617b71c2d842cf001711bed9.mockapi.io/api/v1/blogs?title=${value}`
-    );
-    setData(res.data || []);
-    setShowLoading(false);
+    try {
+      const { value } = e.target;
+      setShowLoading(true);
+      const res = await axios.get(
+        `${process.env.API_URL}/blogs?title=${value}`
+      );
+      setData(res.data || []);
+      setShowLoading(false);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

@@ -13,14 +13,19 @@ const CreateArticles = () => {
   const [image, setImage] = useState("");
   let createdAt = new Date();
   const postData = (e: any) => {
-    e.preventDefault();
-    axios.post(`https://617b71c2d842cf001711bed9.mockapi.io/api/v1/blogs`, {
-      createdAt,
-      title,
-      content,
-      image,
-    });
-    toast["success"]("Create successfully");
+    try {
+      e.preventDefault();
+      axios.post(`${process.env.API_URL}/blogs`, {
+        createdAt,
+        title,
+        content,
+        image,
+      });
+      toast["success"]("Create successfully");
+    } catch (err) {
+      console.log(err);
+    }
+    
   };
 
   return (
